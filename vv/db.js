@@ -12,10 +12,16 @@ const connection = await mysql.createConnection({
 
 connection.connect((err) => {
   if (err) {
-    console.error("Erreur de connexion à la base de données:", err);
+    console.log("Erreur de connexion à la base de données:", err);
   } else {
     console.log("Connecté à la base de données MySQL");
   }
 });
+export async function getData() {
+  const [cars] = await connection.execute("SELECT * FROM cars");
+  console.log(cars);
+}
+// const [cars] = await connection.execute("SELECT * FROM cars");
+// console.log(cars);
 
 export default connection;

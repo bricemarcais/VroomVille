@@ -1,10 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import connection from "../../db";
+import connection, { getData } from "../../db";
 
-const [rows] = await connection.execute("SELECT * FROM cars");
-console.log(rows);
+// const [cars] = await connection.execute("SELECT * FROM cars");
+// console.log(cars);
+getData();
 ---
 
 <Layout title="VroomVille Rentals.">
