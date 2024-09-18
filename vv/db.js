@@ -17,11 +17,5 @@ connection.connect((err) => {
     console.log("Connecté à la base de données MySQL");
   }
 });
-export async function getData() {
-  const [cars] = await connection.execute("SELECT * FROM cars");
-  console.log(cars);
-}
-// const [cars] = await connection.execute("SELECT * FROM cars");
-// console.log(cars);
 
 export default connection;
