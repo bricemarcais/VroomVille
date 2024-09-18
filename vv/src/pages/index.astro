@@ -44,6 +44,7 @@ console.log(cars);
         cars.map((car) => (
           <Card
             key={car.id}
+            image={car.img}
             href={`https://www.exemple.com/${car.brand}-${car.model}`}
             title={`${car.brand} ${car.model}`}
             specifications={`${car.type} - ${car.fuel}`}
