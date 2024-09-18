@@ -1,5 +1,6 @@
 // db.js
 import mysql from "mysql2/promise";
+import { drizzle } from "drizzle-orm/mysql2";
 
 // Configuration de la connexion
 //TODO METTRE EN ENV
@@ -10,12 +11,14 @@ const connection = await mysql.createConnection({
   database: "vroomville", // nom de ta base de données
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.log("Erreur de connexion à la base de données:", err);
-  } else {
-    console.log("Connecté à la base de données MySQL");
-  }
-});
+const db = drizzle(connection);
 
-export default connection;
+// connection.connect((err) => {
+//   if (err) {
+//     console.log("Erreur de connexion à la base de données:", err);
+//   } else {
+//     console.log("Connecté à la base de données MySQL");
+//   }
+// });
+
+export default db;

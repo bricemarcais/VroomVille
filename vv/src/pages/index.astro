@@ -2,9 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { getCars } from "../use-cases/queries";
+import login from "../use-cases/login";
+import { getUserByEmail } from "../use-cases/queries";
 
 const cars = await getCars();
-console.log(cars);
+// const user = await login();
+const user = await getUserByEmail("bricemarcais@gmail.com");
+console.log(user);
 ---
 
 <Layout title="VroomVille Rentals.">

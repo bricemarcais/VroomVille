@@ -15,11 +15,10 @@ export async function getCar(id) {
   return data;
 }
 
-export async function getUser(id) {
-  const [data] = await connection.execute(
-    "SELECT first_name, last_name, email, age, driver_license_number, phone FROM users WHERE id = ?",
-    [id]
-  );
+export async function getUserByEmail(email) {
+  const data = await connection.execute("SELECT * FROM users WHERE email = ?", [
+    email,
+  ]);
   console.log(data);
   return data;
 }
