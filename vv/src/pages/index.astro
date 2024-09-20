@@ -1,14 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import { getCars } from "../use-cases/queries";
 import login from "../use-cases/login";
-import { getUserByEmail } from "../use-cases/queries";
+import db from "../db/db";
+import { cars } from "../db/schema";
+// import { getCars } from "../use-cases/queries";
+// import { getUserByEmail } from "../use-cases/queries";
 
-const cars = await getCars();
+// const cars = await getCars();
 // const user = await login();
-const user = await getUserByEmail("bricemarcais@gmail.com");
-console.log(user);
+// const user = await getUserByEmail("bricemarcais@gmail.com");
+// console.log(user);
+const data = await db.select().from(cars);
+console.log(data);
 ---
 
 <Layout title="VroomVille Rentals.">
@@ -43,9 +47,10 @@ console.log(user);
     </svg>
     <h1>Bienvenue sur <span class="text-gradient">VroomVille</span></h1>
     <p class="instructions">Le site numéro 1 de la location automobile !</p>
+    <!-- <p>{data.brand} {data.model}</p> -->
     <ul role="list" class="link-card-grid">
-      {
-        cars.map((car) => (
+      <!-- {
+        data.map((car) => (
           <Card
             key={car.id}
             image={car.img}
@@ -56,7 +61,7 @@ console.log(user);
             description={`${car.mileage} km.`}
           />
         ))
-      }
+      } -->
     </ul>
   </main>
 </Layout>
