@@ -1,14 +1,18 @@
-// db.js
 import mysql from "mysql2/promise";
 import { drizzle } from "drizzle-orm/mysql2";
 
 // Configuration de la connexion
 //TODO METTRE EN ENV
+// SECRET_DB_HOST=
+// SECRET_DB_USER=
+// SECRET_DB_PASSWORD=
+// SECRET_DB_DBNAME=
+
 const connection = await mysql.createConnection({
-  host: "localhost", // ou l'adresse de ton serveur MySQL
-  user: "root", // ton nom d'utilisateur MySQL
-  password: "0000", // ton mot de passe
-  database: "vroomville", // nom de ta base de données
+  host: import.meta.env.SECRET_DB_HOST, // ou l'adresse du serveur MySQL
+  user: import.meta.env.SECRET_DB_USER, // nom d'utilisateur MySQL
+  password: import.meta.env.SECRET_DB_PASSWORD, // mot de passe
+  database: import.meta.env.SECRET_DB_DBNAME, // nom de ta base de données
 });
 
 const db = drizzle(connection);
