@@ -8,11 +8,17 @@ import { drizzle } from "drizzle-orm/mysql2";
 // SECRET_DB_PASSWORD=
 // SECRET_DB_DBNAME=
 
+console.log(
+  import.meta.env.SECRET_DB_HOST,
+  import.meta.env.SECRET_DB_USER,
+  import.meta.env.SECRET_DB_PASSWORD,
+  import.meta.env.SECRET_DB_DATABASE
+);
 const connection = await mysql.createConnection({
   host: import.meta.env.SECRET_DB_HOST, // ou l'adresse du serveur MySQL
   user: import.meta.env.SECRET_DB_USER, // nom d'utilisateur MySQL
   password: import.meta.env.SECRET_DB_PASSWORD, // mot de passe
-  database: import.meta.env.SECRET_DB_DBNAME, // nom de ta base de données
+  database: import.meta.env.SECRET_DB_DATABASE, // nom de ta base de données
 });
 
 const db = drizzle(connection);

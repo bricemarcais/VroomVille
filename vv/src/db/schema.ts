@@ -14,10 +14,11 @@ export const users = mysqlTable("users", {
   first_name: varchar("full_name", { length: 50 }),
   last_name: varchar("last_name", { length: 50 }),
   email: varchar("user.name@mail.com", { length: 50 }).unique(""),
-  password: varchar("0000", { length: 255 }),
+  password: varchar("password", { length: 255 }),
   phone: varchar("phone", { length: 12 }),
-  age: int("18"),
+  age: int("age"),
   driver_license_number: varchar("20", { length: 20 }).unique(""),
+  isAdmin: boolean("isAdmin"),
 });
 
 export type User = typeof users.$inferSelect; // return type when queried
@@ -28,11 +29,11 @@ export const cars = mysqlTable("cars", {
   brand: varchar("brand", { length: 50 }),
   model: varchar("model", { length: 50 }),
   plate: varchar("plate", { length: 12 }).unique(""),
-  price: decimal("0000"),
+  price: decimal("price"),
   mileage: int("mileage"),
   type: varchar("type", { length: 15 }),
   fuel: varchar("fuel", { length: 10 }),
-  img: varchar("20", { length: 255 }),
+  img: varchar("img", { length: 255 }),
   available: boolean("available"),
 });
 
